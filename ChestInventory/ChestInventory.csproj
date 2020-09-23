@@ -95,7 +95,6 @@
     <Compile Include="EventCodes.cs" />
     <Compile Include="ChestInventoryParser.cs" />
     <Compile Include="OperationCodes.cs" />
-    <Compile Include="PacketDeviceSelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

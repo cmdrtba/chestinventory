@@ -24,31 +24,6 @@ namespace ChestInventory
             photonParser = new ChestInventoryParser();
         }
 
-        class PacketWorker
-        {
-            private readonly PacketCommunicator _pc;
-            private readonly HandlePacket _packetHandler;
-
-            public PacketWorker(PacketCommunicator pc, HandlePacket packetHandler)
-            {
-                _pc = pc;
-                _packetHandler = packetHandler;
-            }
-
-            public void doWork()
-            {
-                Console.WriteLine("Receiving packets: " + _pc.DataLink.Kind);
-                try
-                {
-                    _pc.ReceivePackets(0, _packetHandler);
-                }
-                catch
-                {
-                    Console.WriteLine("Failed to read from: " + _pc.DataLink.Kind);
-                }
-            }
-        }
-
         private void Start()
         {
             // var device = PacketDeviceSelector.AskForPacketDevice();
