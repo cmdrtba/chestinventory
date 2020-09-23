@@ -1,6 +1,6 @@
 ﻿namespace ChestInventory
 {
-public enum OperationCodes
+public enum OperationCodes : short
     {
         Unused,
         Ping,
@@ -393,5 +393,7 @@ public enum OperationCodes
         GetNextOpenWorldAttackScheduleTime,
         RecoverVaultFromHideout,
         GetGuildEnergyDrainInfo,
-        ChannelingUpdate
-    }}
+        ChannelingUpdate,
+        Unknown393
+    }
+}

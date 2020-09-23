@@ -77,7 +77,15 @@ namespace ChestInventory
         public ChestInventoryParser()
         {
             var timer = new Timer(CheckLogout, null, 10000, 10000);
-            clientID = System.IO.File.ReadAllText("client_id.txt");
+            try
+            {
+                clientID = System.IO.File.ReadAllText("client_id.txt");
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                Console.WriteLine("Create a file client_id.txt in the ChestInventory directory with just your client ID issued by the ROAM discord.");
+                throw fnfe;
+            }
 
             ops.Add(OperationCodes.Join);
             // Sent when a particular tab is opened
