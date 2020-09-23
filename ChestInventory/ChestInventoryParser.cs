@@ -108,6 +108,8 @@ namespace ChestInventory
             events.Add(EventCodes.BaseVaultInfo);
             events.Add(EventCodes.GuildVaultInfo);
             events.Add(EventCodes.BankVaultInfo);
+            events.Add(EventCodes.RecoveryVaultPlayerInfo);
+            events.Add(EventCodes.RecoveryVaultGuildInfo);
             events.Add(EventCodes.AttachItemContainer);
             events.Add(EventCodes.DetachItemContainer);
             events.Add(EventCodes.NewSimpleItem);
@@ -135,7 +137,7 @@ namespace ChestInventory
 
         private void SendAndReset()
         {
-            if (capture != null)
+            if (capture != null && !_debug)
             {
                 var captured = capture.ToString();
                 var post = "[" + captured + "]";
@@ -149,9 +151,9 @@ namespace ChestInventory
                 client.UploadStringAsync(uri, post);
 
                 File.WriteAllText("updates_" + _lastPacket + ".json", post);
-                capture = null;
                 Console.WriteLine("Sent update");
             }
+            capture = null;
         }
         
         protected override void OnEvent(byte code, Dictionary<byte, object> parameters)
